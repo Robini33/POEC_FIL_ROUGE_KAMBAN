@@ -1,7 +1,6 @@
 package com.ran.trello.Model.DTO;
 
-import com.ran.trello.Model.Entity.UserP;
-import com.ran.trello.Model.Entity.Wrapper;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +11,7 @@ import java.util.List;
 @Setter
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class ProjectDTO {
     private Integer id;
     private String title;
@@ -20,6 +20,4 @@ public class ProjectDTO {
     private List<Integer> wrappersIds = new ArrayList<>();
     private List<Integer> userId;
 
-    public ProjectDTO(Integer id, String title, String description, String background, List<Wrapper> wrappers, List<UserP> users) {
-    }
 }

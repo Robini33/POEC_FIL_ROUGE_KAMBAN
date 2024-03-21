@@ -8,7 +8,6 @@ import com.ran.trello.Model.Repository.WrapperRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProjectService {
@@ -25,24 +24,46 @@ public class ProjectService {
         this.wrapperRepository = wrapperRepository;
     }
 
-    public List<Project> findAll() { return projectRepository.findAll(); }
 
-    public Project save(Project project) { return projectRepository.save(project); }
 
-    public Optional<Project> findById(Integer id) { return projectRepository.findById(id); }
-    public void deleteById(Integer id) { projectRepository.deleteById(id); } // <--->
+    public ProjectDTO convertToProjectDTO(Project project) {
+        return new ProjectDTO(project.getId(), project.getTitle(), project.getDescription(), project.getBackground(), project.getWrappers().stream().map(elem -> elem.getId()).toList(), project.getUsers().stream().map(elem -> elem.getId()).toList());
+    }
 
-    public List<Project> findByTitle(String title) { return projectRepository.findByTitle(title); }
-
-    public Project update(Integer id, Project project) {
-        Project projectToUpdate = findById(project.getId()).get();
-        projectToUpdate.setTitle(project.getTitle());
-        projectToUpdate.setDescription(project.getDescription());
-        projectToUpdate.setBackground(project.getBackground());
-        projectToUpdate.setWrappers(project.getWrappers());
-        projectToUpdate.setUsers(project.getUsers());
-        return projectRepository.save(projectToUpdate);
+    public Project convertToProject(ProjectDTO projectDTO) {
+        Project project = new Project();
+        project.setTitle(projectDTO.getTitle());
+        project.setDescription(projectDTO.getDescription());
+        project.setBackground(projectDTO.getBackground());
+        project.setId(projectDTO.getId());
+        project.setUsers(userPRepository.findAllById(projectDTO.getUserId()));
+        project.setWrappers(wrapperRepository.findAllById(projectDTO.getWrappersIds()));
+        return project;
     }
 
 
+    public List<ProjectDTO> findAllProjects() {
+        return projectRepository.findAll().stream().map(project -> convertToProjectDTO(project)).toList();
+    }
+
+
+    public ProjectDTO findById(Integer id) {
+        return convertToProjectDTO(projectRepository.findById(id).get());
+    }
+
+    public List<ProjectDTO> findByTitle(String title) {
+        return projectRepository.findByTitle(title).stream().map(project -> convertToProjectDTO(project)).toList();
+    }
+
+    public ProjectDTO saveProject(ProjectDTO project) {
+        return convertToProjectDTO(projectRepository.save(convertToProject(project)));
+    }
+
+    public ProjectDTO update(Integer id, ProjectDTO projectDTO) {
+        return convertToProjectDTO(projectRepository.save(convertToProject(projectDTO)));
+    }
+
+    public void deleteById(Integer id) {
+        projectRepository.deleteById(id);
+    }
 }

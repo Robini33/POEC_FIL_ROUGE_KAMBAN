@@ -1,6 +1,6 @@
 package com.ran.trello.Controller;
 
-import com.ran.trello.Model.Entity.Project;
+import com.ran.trello.Model.DTO.ProjectDTO;
 import com.ran.trello.Service.ProjectService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,26 +17,26 @@ public class ProjectController {
     }
 
     @GetMapping
-    public List<Project> findAll() {
-        return projectService.findAll();
+    public List<ProjectDTO> findAll() {
+        return projectService.findAllProjects();
     }
 
     @GetMapping("/{id}")
-    public Project findById(@PathVariable Integer id) {
-        return projectService.findById(id).get();
+    public ProjectDTO findById(@PathVariable Integer id) {
+        return projectService.findById(id);
     }
 
     @GetMapping("/{title}")
-    public List<Project> findByTitle(@PathVariable String title) {
+    public List<ProjectDTO> findByTitle(@PathVariable String title) {
         return projectService.findByTitle(title);
     }
 
     @PostMapping
-    public Project save(@RequestBody Project project) {
-        return projectService.save(project);
+    public ProjectDTO save(@RequestBody ProjectDTO project) {
+        return projectService.saveProject(project);
     }
     @PutMapping("/{id}")
-    public Project update(@PathVariable Integer id, @RequestBody Project project) {
+    public ProjectDTO update(@PathVariable Integer id, @RequestBody ProjectDTO project) {
         return projectService.update(id, project);
     }
 
