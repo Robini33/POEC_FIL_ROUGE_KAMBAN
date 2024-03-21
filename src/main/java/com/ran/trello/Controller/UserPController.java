@@ -1,5 +1,6 @@
 package com.ran.trello.Controller;
 
+import com.ran.trello.Model.DTO.LogDTO;
 import com.ran.trello.Model.DTO.UserDTO;
 import com.ran.trello.Service.UserPService;
 import org.springframework.web.bind.annotation.*;
@@ -40,7 +41,7 @@ public class UserPController {
         userPService.deleteUser(id);
     }
     @PostMapping("/login")
-    public UserDTO loginUser(@RequestBody UserDTO body) throws Exception {
+    public UserDTO loginUser(@RequestBody LogDTO body) throws Exception {
         return userPService.loginUser(body);
     }
 }
