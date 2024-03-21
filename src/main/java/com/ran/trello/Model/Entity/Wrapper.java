@@ -1,9 +1,6 @@
 package com.ran.trello.Model.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,6 +17,8 @@ public class Wrapper {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
+
+    @OneToMany(mappedBy = "wrapper")
     private List<TaskCard> cards = new ArrayList<>();
     private Integer projectId;
 
@@ -28,4 +27,5 @@ public class Wrapper {
         this.cards = cards;
         this.projectId = projectId;
     }
+
 }

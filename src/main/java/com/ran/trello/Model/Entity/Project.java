@@ -1,9 +1,6 @@
 package com.ran.trello.Model.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,7 +19,13 @@ public class Project {
     private String title;
     private String description;
     private String background;
+    @OneToMany
+    @JoinTable(name = "project_wrappers")
     private List<Wrapper> wrappers = new ArrayList<>();
+    @OneToMany
+    @JoinTable(name = "project_users",
+            joinColumns = @JoinColumn(name = "project_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<UserP> users;
 
     public Project(String title, String description, String background, List<Wrapper> wrappers, List<UserP> users) {
