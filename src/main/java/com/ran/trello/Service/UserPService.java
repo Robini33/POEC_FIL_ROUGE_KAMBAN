@@ -1,5 +1,6 @@
 package com.ran.trello.Service;
 
+import com.ran.trello.Model.DTO.LogDTO;
 import com.ran.trello.Model.DTO.UserDTO;
 import com.ran.trello.Model.Entity.UserP;
 import com.ran.trello.Model.Repository.UserPRepository;
@@ -18,8 +19,13 @@ public class UserPService {
         return userPRepository.findAll().stream().map(userP -> convertToUserDTO(userP)).toList();
     }
 
-    public UserDTO loginUser(UserDTO body) throws Exception {
-        return userPRepository.loginUser(body);
+    public UserDTO loginUser(LogDTO body) throws Exception {
+        return userPRepository.findAll().stream().map(userP -> {
+            if (userP.getEmail().equals(body.getEmail()) && userP.getPassword().equals(body.getPassword())) {
+                return convertToUserDTO(userP);
+            }
+            return null;
+        }).findFirst().orElse(null);
     }
     public UserDTO convertToUserDTO(UserP userP) {
         return new UserDTO(userP.getId(), userP.getEmail(), userP.getFirstname(), userP.getLastname(), userP.getProjects().stream().map(project -> project.getId()).toList() );
