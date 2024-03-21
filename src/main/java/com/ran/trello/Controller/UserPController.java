@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/user")
+@CrossOrigin("*")
 public class UserPController {
     private UserPService userPService;
 
