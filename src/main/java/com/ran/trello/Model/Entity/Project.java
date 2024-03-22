@@ -21,8 +21,8 @@ public class Project {
     private String background;
     @OneToMany
     @JoinTable(name = "project_wrappers",
-            joinColumns = @JoinColumn(name = "project_id"),
-            inverseJoinColumns = @JoinColumn(name = "wrapper_id"))
+            joinColumns = @JoinColumn(name = "wrapper_id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id"))
     private List<Wrapper> wrappers = new ArrayList<>();
     @ManyToMany
     @JoinTable(name = "project_users",
