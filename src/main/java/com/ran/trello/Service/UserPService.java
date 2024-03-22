@@ -41,6 +41,7 @@ public class UserPService {
         userP.setEmail(body.getEmail());
         userP.setFirstname(body.getFirstname());
         userP.setLastname(body.getLastname());
+        userP.setPassword(body.getPassword());
         return convertToUserDTO(userPRepository.save(userP));
     }
 
@@ -56,6 +57,7 @@ public class UserPService {
         userP.setEmail(userDTO.getEmail());
         userP.setFirstname(userDTO.getFirstname());
         userP.setLastname(userDTO.getLastname());
+        userP.setPassword(userDTO.getPassword());
         return userP;
     }
 }
