@@ -18,7 +18,7 @@ public class Wrapper {
     private Integer id;
     private String title;
     private Integer position;
-    @OneToMany
+    @ManyToMany
     @JoinTable(name = "wrapper_cards",
             joinColumns = @JoinColumn(name = "wrapper_id"),
             inverseJoinColumns = @JoinColumn(name = "card_id"))

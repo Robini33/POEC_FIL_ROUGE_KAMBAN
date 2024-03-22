@@ -20,7 +20,7 @@ public class UserP {
     private String password;
     private String firstname;
     private String lastname;
-    @OneToMany
+    @ManyToMany
     @JoinTable(name = "project_users",
             joinColumns = @JoinColumn(name = "userP_id"),
             inverseJoinColumns = @JoinColumn(name = "project_id"))
