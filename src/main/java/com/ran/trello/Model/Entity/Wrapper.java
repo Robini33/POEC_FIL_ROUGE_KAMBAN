@@ -17,15 +17,20 @@ public class Wrapper {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
-
-    @OneToMany(mappedBy = "wrapper")
+    private Integer position;
+    @OneToMany
+    @JoinTable(name = "wrapper_cards",
+            joinColumns = @JoinColumn(name = "wrapper_id"),
+            inverseJoinColumns = @JoinColumn(name = "card_id"))
     private List<TaskCard> cards = new ArrayList<>();
+    @ManyToOne(targetEntity = Project.class)
+    @JoinColumn(name = "project_id")
     private Integer projectId;
 
-    public Wrapper(String title, List<TaskCard> cards, int projectId) {
+    public Wrapper(String title, Integer position, List<TaskCard> cards, Integer projectId) {
         this.title = title;
+        this.position = position;
         this.cards = cards;
         this.projectId = projectId;
     }
-
 }

@@ -20,7 +20,10 @@ public class UserP {
     private String password;
     private String firstname;
     private String lastname;
-    @OneToMany(mappedBy = "userP")
+    @OneToMany
+    @JoinTable(name = "project_users",
+            joinColumns = @JoinColumn(name = "userP_id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id"))
     private List<Project> projects = new ArrayList<>();
 
     public UserP(String email, String password, String firstname, String lastname, List<Project> projects) {

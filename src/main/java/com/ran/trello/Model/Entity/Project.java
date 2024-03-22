@@ -20,12 +20,14 @@ public class Project {
     private String description;
     private String background;
     @OneToMany
-    @JoinTable(name = "project_wrappers")
+    @JoinTable(name = "project_wrappers",
+            joinColumns = @JoinColumn(name = "project_id"),
+            inverseJoinColumns = @JoinColumn(name = "wrapper_id"))
     private List<Wrapper> wrappers = new ArrayList<>();
     @OneToMany
     @JoinTable(name = "project_users",
             joinColumns = @JoinColumn(name = "project_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
+            inverseJoinColumns = @JoinColumn(name = "userP_id"))
     private List<UserP> users;
 
     public Project(String title, String description, String background, List<Wrapper> wrappers, List<UserP> users) {

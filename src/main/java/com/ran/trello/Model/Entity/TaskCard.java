@@ -1,9 +1,6 @@
 package com.ran.trello.Model.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,6 +16,8 @@ public class TaskCard {
     private String title;
     private String description;
     private Integer position;
+    @ManyToOne(targetEntity = Wrapper.class)
+    @JoinColumn(name = "wrapper_id")
     private Integer wrapperId;
     private String status;
 
