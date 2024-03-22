@@ -27,17 +27,6 @@ public class UserPService {
             return null;
         }).findFirst().orElse(null);
     }
-    public UserDTO convertToUserDTO(UserP userP) {
-        return new UserDTO(userP.getId(), userP.getEmail(), userP.getFirstname(), userP.getLastname(), userP.getProjects().stream().map(project -> project.getId()).toList() );
-    }
-    public UserP convertToUserP(UserDTO userDTO) {
-        UserP userP = new UserP();
-        userP.setId(userDTO.getId());
-        userP.setEmail(userDTO.getEmail());
-        userP.setFirstname(userDTO.getFirstname());
-        userP.setLastname(userDTO.getLastname());
-        return userP;
-    }
 
     public UserDTO findUserById(Integer id) {
         return convertToUserDTO(userPRepository.findById(id).get());
@@ -57,5 +46,16 @@ public class UserPService {
 
     public void deleteUser(Integer id) {
         userPRepository.deleteById(id);
+    }
+    public UserDTO convertToUserDTO(UserP userP) {
+        return new UserDTO(userP.getId(), userP.getEmail(), userP.getFirstname(), userP.getLastname(), userP.getPassword(), userP.getProjects().stream().map(project -> project.getId()).toList() );
+    }
+    public UserP convertToUserP(UserDTO userDTO) {
+        UserP userP = new UserP();
+        userP.setId(userDTO.getId());
+        userP.setEmail(userDTO.getEmail());
+        userP.setFirstname(userDTO.getFirstname());
+        userP.setLastname(userDTO.getLastname());
+        return userP;
     }
 }

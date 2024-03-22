@@ -23,8 +23,6 @@ public class Wrapper {
             joinColumns = @JoinColumn(name = "wrapper_id"),
             inverseJoinColumns = @JoinColumn(name = "card_id"))
     private List<TaskCard> cards = new ArrayList<>();
-    @ManyToOne(targetEntity = Project.class)
-    @JoinColumn(name = "project_id")
     private Integer projectId;
 
     public Wrapper(String title, Integer position, List<TaskCard> cards, Integer projectId) {
