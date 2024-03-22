@@ -20,7 +20,7 @@ public class Project {
     private String description;
     private String background;
     @OneToMany
-    @JoinTable(name = "project_wrappers",
+    @JoinTable(name = "wrapper_project",
             joinColumns = @JoinColumn(name = "wrapper_id"),
             inverseJoinColumns = @JoinColumn(name = "project_id"))
     private List<Wrapper> wrappers = new ArrayList<>();
