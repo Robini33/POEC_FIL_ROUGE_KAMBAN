@@ -31,4 +31,8 @@ public class Wrapper {
         this.cards = cards;
         this.projectId = projectId;
     }
+
+    public void addCard(TaskCard card) {
+        this.cards.add(card);
+    }
 }

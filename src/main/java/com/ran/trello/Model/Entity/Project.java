@@ -21,8 +21,8 @@ public class Project {
     private String background;
     @OneToMany
     @JoinTable(name = "wrapper_project",
-            joinColumns = @JoinColumn(name = "wrapper_id"),
-            inverseJoinColumns = @JoinColumn(name = "project_id"))
+            joinColumns = @JoinColumn(name = "project_id"),
+            inverseJoinColumns = @JoinColumn(name = "wrapper_id"))
     private List<Wrapper> wrappers = new ArrayList<>();
     @ManyToMany
     @JoinTable(name = "project_users",
@@ -36,5 +36,13 @@ public class Project {
         this.background = background;
         this.wrappers = wrappers;
         this.users = users;
+    }
+
+    public void addWrapper(Wrapper wrapper) {
+        this.wrappers.add(wrapper);
+    }
+
+    public void addUser(UserP user) {
+        this.users.add(user);
     }
 }
