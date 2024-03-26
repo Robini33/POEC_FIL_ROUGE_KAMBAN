@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/wrapper")
+@CrossOrigin("*")
 public class WrapperController {
 
     private final WrapperService wrapperService;
