@@ -41,7 +41,7 @@ public class UserPController {
         userPService.deleteUser(id);
     }
     @PostMapping("/login")
-    public UserDTO loginUser(@RequestBody LogDTO body) throws Exception {
+    public UserDTO loginUser(@RequestBody LogDTO body) {
         return userPService.loginUser(body);
     }
 }

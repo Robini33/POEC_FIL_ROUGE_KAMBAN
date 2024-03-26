@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/wrapper")
+@CrossOrigin("*")
 public class WrapperController {
 
     private final WrapperService wrapperService;
@@ -32,9 +33,8 @@ public class WrapperController {
     }
 
     @GetMapping
-    public ResponseEntity<List<WrapperDTO>> getAllWrappers() {
-        List<WrapperDTO> wrappers = wrapperService.getAllWrappers();
-        return ResponseEntity.ok(wrappers);
+    public List<WrapperDTO> getAllWrappers() {
+        return wrapperService.getAllWrappers();
     }
 
     @PutMapping("/{id}")

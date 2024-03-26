@@ -19,13 +19,8 @@ public class UserPService {
         return userPRepository.findAll().stream().map(userP -> convertToUserDTO(userP)).toList();
     }
 
-    public UserDTO loginUser(LogDTO body) throws Exception {
-        return userPRepository.findAll().stream().map(userP -> {
-            if (userP.getEmail().equals(body.getEmail()) && userP.getPassword().equals(body.getPassword())) {
-                return convertToUserDTO(userP);
-            }
-            return null;
-        }).findFirst().orElse(null);
+    public UserDTO loginUser(LogDTO body) {
+        return convertToUserDTO(userPRepository.findByEmailAndPassword(body.getEmail(), body.getPassword()).get());
     }
 
     public UserDTO findUserById(Integer id) {
