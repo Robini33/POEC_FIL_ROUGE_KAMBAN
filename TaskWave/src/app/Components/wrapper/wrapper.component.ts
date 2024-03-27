@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 export class WrapperComponent {
   @Input() wrapper!: Wrapper;
   @Input() card!: Card;
+  @Input() newTitle!: String;
   cardList: Card[] = [];
 
   constructor(public wrapperService: WrapperService, public users: UserService) { }
@@ -25,7 +26,7 @@ export class WrapperComponent {
       this.cardList = this.wrapper.cards;
     }
   }
-  addTask(Wrapper: Wrapper) {
+  addTask(newTitle: String, wrapper: Wrapper) {
     // Wrapper.cards.push(this.card);
     // this.wrapperService.updateWrapper(Wrapper).subscribe();
   }

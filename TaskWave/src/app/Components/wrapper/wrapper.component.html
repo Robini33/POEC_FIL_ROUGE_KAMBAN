@@ -1,6 +1,5 @@
-
-<div class="obj">
-    <div class="obj__info">
+<div class="container">
+    <div class="m-3 p-3 bg-light">
         <h2>{{wrapper.title}}</h2>
         <div *ngFor="let card of cardList">
             <div class="collectionContainer">
@@ -8,6 +7,7 @@
             </div>              
         </div>
         <!-- <button [hidden]="!this.user.connected" (click)="addToCart(project)">Add to project</button> -->
+        <input type="text" [name]="newTitle" class="">
+    <button (click)="addTask(newTitle, wrapper)">Ajouter une tâche</button>
     </div>
-    <button (click)="addTask(wrapper)">Ajouter une tâche</button>
 </div>
