@@ -9,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  constructor() { }
+
+  run () {
+    console.log("header"); 
+  }
+
 }

@@ -56,4 +56,8 @@ public class WrapperService {
         dto.setCardsIds(wrapper.getCards().stream().map(card -> card.getId()).collect(Collectors.toList()));
         return dto;
     }
+
+    public List<Wrapper> getWrappersByProjectId(Integer id) {
+        return wrapperRepository.findAll().stream().filter(wrapper -> wrapper.getProjectId().equals(id)).toList();
+    }
 }

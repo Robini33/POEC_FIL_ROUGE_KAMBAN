@@ -11,19 +11,15 @@ import { Project } from '../../Model/Project';
   templateUrl: './project-list.component.html',
   styleUrl: './project-list.component.css'
 })
-export class ProjectListComponent implements OnChanges {
-	constructor(public projects : ProjectService) {
-		this.getProjects();
-	}
-
-	ngOnChanges(changes: SimpleChanges): void {
+export class ProjectListComponent {
+	constructor(public projectService : ProjectService) {
 		this.getProjects();
 	}
 
 	projectsList : Project[] = [];
 
 	getProjects() {
-		this.projects.getProjects().subscribe((data: Project[]) => {
+		this.projectService.getProjects().subscribe((data: Project[]) => {
 			this.projectsList = data;
 		});
 	}

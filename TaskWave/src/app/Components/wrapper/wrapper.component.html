@@ -1,1 +1,13 @@
-<p>wrapper works!</p>
+
+<div class="obj">
+    <div class="obj__info">
+        <h2>{{wrapper.title}}</h2>
+        <div *ngFor="let card of cardList">
+            <div class="collectionContainer">
+                <app-card [card]="card"></app-card>
+            </div>              
+        </div>
+        <!-- <button [hidden]="!this.user.connected" (click)="addToCart(project)">Add to project</button> -->
+    </div>
+    <button (click)="addTask(wrapper)">Ajouter une tâche</button>
+</div>

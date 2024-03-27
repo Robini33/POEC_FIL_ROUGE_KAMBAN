@@ -11,10 +11,11 @@ import { Project } from '../../Model/Project';
   styleUrl: './project.component.css'
 })
 export class ProjectComponent {
-	constructor(public projects : ProjectService, public users : UserService) { }
+	constructor(public projectService : ProjectService, public users : UserService) { }
 
-	deleteProject(arg0: Project) {
-	}
+  selectProject(project : Project) {
+  	this.projectService.selectProject(project);
+  }
 
 	@Input() project! : Project;
 

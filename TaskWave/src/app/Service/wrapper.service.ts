@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Wrapper } from '../Model/Wrapper';
+import { WrapperDTO } from '../Model/WrapperDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -38,4 +39,9 @@ export class WrapperService {
   deleteWrapper(id : number) {
 	return this.http.delete(this.serviceURL + '/' + id);
   }
+
+  getWrappersByProjectId(id: number): Observable<Wrapper[]> {
+    return this.http.get<Wrapper[]>(this.serviceURL + '/' + id);
+  }
+  
 }
