@@ -1,1 +1,15 @@
-<p>header works!</p>
+<nav class="container-fluid bg-dark">
+	<a button class="btn btn-primary" [routerLink]="['/']">TaskWave</a>
+	<!-- Dropdown list -->
+	<div class="dropdown" *ngIf="!this.user.connected">
+		<button class="btn btn-primary">Connection/Inscription</button>
+
+		<div class="dropdown-content" >
+			<a [routerLink]="['/connection']" >Connection</a>
+			<a [routerLink]="['/inscription']" >Inscription</a>
+		</div>
+	</div>
+	<p>
+		<a [routerLink]="['/profil']" *ngIf="this.user.connected">Profil</a>
+	</p>
+</nav>

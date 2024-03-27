@@ -7,7 +7,8 @@ import { ProjectListComponent } from './Components/project-list/project-list.com
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
-    { path: '', component: AppComponent },
+    { path: '',   redirectTo: '/app-component', pathMatch: 'full' },
+    { path: 'app-component', component: AppComponent },
     { path: 'project-component', component: ProjectComponent },
     { path: 'project-list', component: ProjectListComponent },
     { path: 'wrapper-component', component: WrapperComponent },
