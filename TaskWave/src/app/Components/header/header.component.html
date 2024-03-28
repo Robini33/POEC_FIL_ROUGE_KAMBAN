@@ -1,15 +1,27 @@
-<nav class="container-fluid bg-dark">
-	<a button class="btn btn-primary" [routerLink]="['/']">TaskWave</a>
+<div class="container-fluid row bg-dark" style="height: 100px;">
+	<a button class="btn btn-dark d-flex" href="/">TaskWave
+		<img 
+		src="https://www.iconarchive.com/download/i120827/iconarchive/seaside/Water-Wave.1024.png" 
+		alt=""
+		width="50" height="50">
+	</a>
 	<!-- Dropdown list -->
-	<div class="dropdown" *ngIf="!this.user.connected">
-		<button class="btn btn-primary">Connection/Inscription</button>
-
-		<div class="dropdown-content" >
-			<a [routerLink]="['/connection']" >Connection</a>
-			<a [routerLink]="['/inscription']" >Inscription</a>
-		</div>
+	<div class="dropdown position-absolute top-0 start-0" *ngIf="!this.user.connected">
+		<a class="btn btn-secondary m-3" [routerLink]="['/inscription']" >Inscription</a>
+		<a class="btn btn-primary m-3" [routerLink]="['/connection']" >Connection</a>
 	</div>
-	<p>
-		<a [routerLink]="['/profil']" *ngIf="this.user.connected">Profil</a>
-	</p>
-</nav>
+	<!-- <a [routerLink]="['/profil']" *ngIf="this.user.connected">Profil</a> -->
+	<div class="dropdown" *ngIf="this.user.connected">
+		<a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+		<img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+		<strong>mdo</strong>
+		</a>
+		<ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
+		<!-- <li><a class="dropdown-item" href="#">New project...</a></li> -->
+		<li><a class="dropdown-item" href="#">Settings</a></li>
+		<li><a class="dropdown-item" href="#">Profile</a></li>
+		<li><hr class="dropdown-divider"></li>
+		<li><a class="dropdown-item" href="#" click="logout()">Sign out</a></li>
+		</ul>
+	</div>
+<div>

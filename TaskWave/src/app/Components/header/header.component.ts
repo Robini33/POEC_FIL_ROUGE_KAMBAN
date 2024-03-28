@@ -17,4 +17,8 @@ export class HeaderComponent {
     console.log("header");
   }
 
+  logout() {
+    this.user.disconnectUser();
+  }
+
 }

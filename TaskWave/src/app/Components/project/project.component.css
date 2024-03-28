@@ -1,6 +1,6 @@
 .obj{
-	width: 150px;
-	height: 250px;
+	width: auto;
+	height: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;

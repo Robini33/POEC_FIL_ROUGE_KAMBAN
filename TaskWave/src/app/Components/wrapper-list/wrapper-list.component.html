@@ -1,3 +1,3 @@
-<div class="collectionContainer">
+<div class="collectionContainer col" [ngStyle]="{ 'background-image': 'url(' + this.projectService.project.background + ')' }">
 	<app-wrapper *ngFor="let wrapper of wrappersList" [wrapper]="wrapper"></app-wrapper>
 </div>

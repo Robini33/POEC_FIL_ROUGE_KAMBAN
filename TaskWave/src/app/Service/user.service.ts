@@ -4,13 +4,14 @@ import { Observable } from 'rxjs/internal/Observable';
 import { UserDTO } from '../Model/UserDTO';
 import { LogsDTO } from '../Model/LogsDTO';
 import { User } from '../Model/User';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private router : Router, private route : ActivatedRoute) { }
 
   serviceURL = 'http://localhost:3050/user';
 
@@ -39,6 +40,7 @@ export class UserService {
   connectUser(logDTO : LogsDTO)  {
 	this.http.post<UserDTO>(this.serviceURL + '/login', logDTO).subscribe(
 	  (data : UserDTO) => {
+		console.log(data);
 		this.currentUser = {
 		  id : data.id!,
 		  email : data.email!,
@@ -48,6 +50,7 @@ export class UserService {
 		  projectsIds : data.projectsIds!
 		};
 		this.connected = true;
+		this.router.navigate(['project-list'], { relativeTo: this.route });
 	  }
 	);
   }
@@ -55,6 +58,16 @@ export class UserService {
 	this.http.post<UserDTO>(this.serviceURL + '/register', userDTO).subscribe(
 	  (data : UserDTO) => {
 		console.log(data);
+		this.currentUser = {
+		  id : data.id!,
+		  email : data.email!,
+		  password : data.password!,
+		  firstname : data.firstname!,
+		  lastname : data.lastname!,
+		  projectsIds : data.projectsIds!
+		}
+		this.connected = true;
+		this.router.navigate(['project-list'], { relativeTo: this.route });
 	  }
 	);
   }

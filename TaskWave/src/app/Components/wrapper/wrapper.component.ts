@@ -5,6 +5,7 @@ import { Wrapper } from '../../Model/Wrapper';
 import { Card } from '../../Model/Card';
 import { CardComponent } from '../card/card.component';
 import { CommonModule } from '@angular/common';
+import { Project } from '../../Model/Project';
 
 @Component({
   selector: 'app-wrapper',
@@ -17,6 +18,7 @@ export class WrapperComponent {
   @Input() wrapper!: Wrapper;
   @Input() card!: Card;
   @Input() newTitle!: String;
+  project!: Project;
   cardList: Card[] = [];
 
   constructor(public wrapperService: WrapperService, public users: UserService) { }

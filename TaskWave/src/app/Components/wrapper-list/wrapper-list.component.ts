@@ -8,6 +8,7 @@ import { Project } from '../../Model/Project';
 import { Observable } from 'rxjs';
 import { WrapperDTO } from '../../Model/WrapperDTO';
 import { HttpParams } from '@angular/common/http';
+import { ProjectService } from '../../Service/project.service';
 
 @Component({
   selector: 'app-wrapper-list',
@@ -21,7 +22,7 @@ export class WrapperListComponent {
   project! : Project;
   wrappersList : any = [];
 	
-constructor(public wrapperService : WrapperService, private route: ActivatedRoute) {
+constructor(public wrapperService : WrapperService, public projectService : ProjectService, private route: ActivatedRoute) {
   this.projectId = this.route.snapshot.params['id'];
   console.log(this.projectId);
   this.wrappersList = this.getWrappers(this.projectId); 

@@ -17,6 +17,7 @@ export class ProjectService {
 
   serviceURL = 'http://localhost:3050/project';
   wrappers : Observable<Wrapper[]> = new Observable<Wrapper[]>();
+  project!: Project;
   // crud operations
 
   // get all project
@@ -50,6 +51,7 @@ export class ProjectService {
     // this.wrappers = this.getWrappersByProjectId(project.id);
     // const body = { project: project, wrappers: this.wrappers };
   	// this.router.navigate(['tab', this.wrappers], { relativeTo: this.route });
+    this.project = project;
     this.router.navigate(['tab',project.id], { relativeTo: this.route });
   }
 

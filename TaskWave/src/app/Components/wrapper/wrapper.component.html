@@ -1,6 +1,8 @@
 <div class="container">
     <div class="m-3 p-3 bg-light">
-        <h2>{{wrapper.title}}</h2>
+        <div class="bg-pink">
+            <h2>{{wrapper.title}}</h2>
+        </div>
         <div *ngFor="let card of cardList">
             <div class="collectionContainer">
                 <app-card [card]="card"></app-card>
